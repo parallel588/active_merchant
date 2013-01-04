@@ -4,10 +4,10 @@ module ActiveMerchant #:nodoc:
       module Transactpro
         class Helper < ActiveMerchant::Billing::Integrations::Helper
           # Replace with the real mapping
-          mapping :account, ''
-          mapping :amount, ''
-        
-          mapping :order, ''
+          mapping :account, 'guid'
+          mapping :amount, 'amount'
+          mapping :currency, 'currency'
+          mapping :order, 'merchant_transaction_id'
 
           mapping :customer, :first_name => '',
                              :last_name  => '',
@@ -24,7 +24,7 @@ module ActiveMerchant #:nodoc:
           mapping :notify_url, ''
           mapping :return_url, ''
           mapping :cancel_return_url, ''
-          mapping :description, ''
+          mapping :description, 'description'
           mapping :tax, ''
           mapping :shipping, ''
         end
