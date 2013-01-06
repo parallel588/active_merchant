@@ -30,7 +30,7 @@ module ActiveMerchant #:nodoc:
                                               rs: self.routing_string,
                                               currency: currency,
                                               merchant_site_url: self.merchant_site_url,
-                                              f_extended: self.f_extended,
+                                              f_extended: (self.f_extended||5),
                                               save_card: 0,
                                               merchant_transaction_id: self.merchant_transaction_id,
                                               user_ip: self.user_ip,

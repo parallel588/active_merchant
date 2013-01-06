@@ -26,6 +26,15 @@ module ActiveMerchant #:nodoc:
           end
         end
 
+        def self.status_url
+          case ActiveMerchant::Billing::Base.integration_mode
+          when :production
+            %{#{service_url}/gwprocessor2.php?a=status_request}
+          when :test
+            %{#{service_url}/gw2test/gwprocessor2.php?a=status_request}
+          end
+        end
+
         def self.service_url
 
           mode = ActiveMerchant::Billing::Base.integration_mode
