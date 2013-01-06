@@ -2,6 +2,7 @@ require File.dirname(__FILE__) + '/transactpro/common.rb'
 require File.dirname(__FILE__) + '/transactpro/transaction.rb'
 require File.dirname(__FILE__) + '/transactpro/helper.rb'
 require File.dirname(__FILE__) + '/transactpro/notification.rb'
+require File.dirname(__FILE__) + '/transactpro/status.rb'
 
 module ActiveMerchant #:nodoc:
   module Billing #:nodoc:

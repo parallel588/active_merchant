@@ -1,4 +1,3 @@
-# ActiveMerchant::Billing::Integrations::Transactpro::Transaction
 module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
     module Integrations #:nodoc:
