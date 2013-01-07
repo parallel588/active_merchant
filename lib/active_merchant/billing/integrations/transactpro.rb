@@ -22,11 +22,11 @@ module ActiveMerchant #:nodoc:
           end
 
           def create_transaction_url
-            %{#{service_url}/#{ test? ? 'gw2test/' : '' }gw2test/gwprocessor2.php?a=init}
+            %{#{service_url}/#{ test? ? 'gw2test/' : '' }gwprocessor2.php?a=init}
           end
 
           def status_url
-            %{#{service_url}/#{ test? ? 'gw2test/' : '' }gw2test/gwprocessor2.php?a=status_request}
+            %{#{service_url}/#{ test? ? 'gw2test/' : '' }gwprocessor2.php?a=status_request}
           end
 
           def service_url
