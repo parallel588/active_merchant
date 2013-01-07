@@ -12,7 +12,6 @@ module ActiveMerchant #:nodoc:
           attr_accessor :guid, :password, :routing_string, :currency, :merchant_site_url, :f_extended, :save_card
           attr_accessor :merchant_transaction_id,  :user_ip, :amount
           attr_accessor :name_on_card, :description, :street, :zip, :city, :country, :state, :email, :phone
-<
 
           # @param [Hash] fields
           #
