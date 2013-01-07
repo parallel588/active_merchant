@@ -12,13 +12,7 @@ module ActiveMerchant #:nodoc:
           attr_accessor :guid, :password, :routing_string, :currency, :merchant_site_url, :f_extended, :save_card
           attr_accessor :merchant_transaction_id,  :user_ip, :amount
           attr_accessor :name_on_card, :description, :street, :zip, :city, :country, :state, :email, :phone
-
-          # # @param [Hash] config: quid, pwd, rs and etc
-          # #
-          # def initialize(config, id = nil)
-          #   @config = config
-          #   @id = id
-          # end
+<
 
           # @param [Hash] fields
           #
@@ -46,9 +40,34 @@ module ActiveMerchant #:nodoc:
                                             }]
 
             data[:email] = self.email if self.email.present?
-            @response = ssl_post(Transactpro.create_transaction_url, data.to_post_data )
+            @response = Common.parse_raw_response(ssl_post(Transactpro.create_transaction_url, data.to_post_data ))
 
           end
+
+          def transaction_id
+            @response['OK']
+          end
+          def redirect_url
+            @response['RedirectOnsite']
+          end
+
+          def error_message
+            @response['ERROR']
+          end
+
+          def status
+            case
+            when (@response || { } ).has_key?('OK')
+              :success
+            when (@response || { } ).has_key?('ERROR')
+              :error
+            end
+          end
+
+          def success?
+            status == :success
+          end
+
 
           def currency
             (ActiveMerchant::Billing::Base.integration_mode == :test ? DEFAULT_CURRENCY : (@currency || DEFAULT_CURRENCY) )
